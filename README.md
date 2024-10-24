@@ -5,8 +5,10 @@ Este projeto tem como objetivo criar um sistema capaz de validar uma senha segui
 A aplicação permite uma verificação do padrão de senhas e garantindo segurança.
 
 Contém duas branchs:
-V1-Detail-Message-Generic: Utiliza anotações para validação de senha e um @ControllerAdvice para tratar as mensagens de erro de forma genérica.
-V2-Detail-Message-Erros: Emprega validações condicionais para cada critério da senha e retorna uma lista com todos os critérios não atendidos.
+
+- V1-Detail-Message-Generic: Utiliza anotações para validação de senha e um @ControllerAdvice para tratar as mensagens de erro de forma genérica.
+
+- V2-Detail-Message-Erros: Emprega validações condicionais para cada critério da senha e retorna uma lista com todos os critérios não atendidos.
 
 
 Técnologias:
