@@ -1,27 +1,32 @@
 package com.example.securityPassword.service;
 
+import com.example.securityPassword.component.PasswordVerifyComponent;
 import com.example.securityPassword.dto.PasswordDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @Service
 public class PasswordService {
 
-    public Boolean passwordManagement(PasswordDto passwordDto) {
+    private PasswordVerifyComponent passwordVerifyComponent;
 
+    public PasswordService(PasswordVerifyComponent passwordVerifyComponent) {
+        this.passwordVerifyComponent = passwordVerifyComponent;
+    }
 
+    public ResponseEntity<Object> verifyPassword(PasswordDto passwordDto, UriComponentsBuilder uriBuilder) {
 
+        var response = passwordVerifyComponent.CheckRules(passwordDto);
 
-//        String regExpn = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$";
-//        CharSequence inputPassword = passwordDto.password();
-//
-//        Pattern pattern = Pattern.compile(regExpn,Pattern.CASE_INSENSITIVE);
-//        Matcher matcher = pattern.matcher(inputPassword);
-//        if(matcher.matches())
-//            return true;
-//        else
-//            return false;
-        return true;
+        if (response.isEmpty()) {
+            URI uri = uriBuilder.path("/validate-password").buildAndExpand().toUri();
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.badRequest().body(response);
+        }
+
     }
 }

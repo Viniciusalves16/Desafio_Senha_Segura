@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/securityPassword.iml" filepath="$PROJECT_DIR$/.idea/securityPassword.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Desafio_Senha_Segura.iml" filepath="$PROJECT_DIR$/.idea/Desafio_Senha_Segura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/securityPassword/securityPassword.iml" filepath="$PROJECT_DIR$/securityPassword/securityPassword.iml" />
     </modules>
   </component>
 </project>

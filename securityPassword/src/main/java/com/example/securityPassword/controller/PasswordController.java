@@ -20,14 +20,14 @@ public class PasswordController {
     public PasswordController(PasswordService passwordService) {
         this.passwordService = passwordService;
     }
+
     @PostMapping()
     @Transactional
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity registerPassword(@RequestBody @Valid PasswordDto passwordDto, UriComponentsBuilder uriBuilder) {
 
-        URI uri = uriBuilder.path("/validate-password").buildAndExpand().toUri();
-        return ResponseEntity.noContent().build();
 
+        return passwordService.verifyPassword(passwordDto, uriBuilder);
 
 
     }
